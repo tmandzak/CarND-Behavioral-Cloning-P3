@@ -1,0 +1,11 @@
+data
+models
+*simulator*
+.ipynb_checkpoints
+bottlenecks
+*.zip
+__pycache__
+*.npy
+*.p
+.vscode
+*.h5
