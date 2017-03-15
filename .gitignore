@@ -9,4 +9,3 @@ __pycache__
 *.npy
 *.p
 .vscode
-*.h5
