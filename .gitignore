@@ -1,5 +1,6 @@
 data
 models
+*windows*
 *simulator*
 .ipynb_checkpoints
 bottlenecks
