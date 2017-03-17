@@ -9,3 +9,5 @@ __pycache__
 *.npy
 *.p
 .vscode
+*.mp4
+track*
