@@ -49,7 +49,8 @@ set_speed = 9
 controller.set_desired(set_speed)
 
 def preprocess(image):
-    image = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)[:,:,1]
+    image = cv2.cvtColor(image, cv2.COLOR_RGB2YUV)[:,:,0]
+    #image = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)[:,:,1]
     #image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
     #image = image[:,:,2]
     image = image[:,:,None]
