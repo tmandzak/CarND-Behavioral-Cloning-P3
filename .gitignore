@@ -1,12 +1,13 @@
-data*
+IMG
 models
+video
 *windows*
 *simulator*
 .ipynb_checkpoints
 bottlenecks
 *.zip
+*.7z
 __pycache__
 *.npy
 *.p
 .vscode
-*.mp4
