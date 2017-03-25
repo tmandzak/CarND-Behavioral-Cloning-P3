@@ -1,6 +1,5 @@
 # **Behavioral Cloning** 
-
----
+[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
 ## **Behavioral Cloning Project**
 
@@ -31,11 +30,21 @@ The goals / steps of this project are the following:
 
 #### 1. Submission includes all required files and can be used to run the simulator in autonomous mode
 
-My project includes the following files:
+My project includes 3 folders **tracks30**, **tracks**, **track1fast** with the following files in each:
 * model.py containing the script to create and train the model
+* model.ipynb using model.py to run the pipeline step by step and build various plots
 * drive.py for driving the car in autonomous mode
 * model.h5 containing a trained convolution neural network 
-* writeup_report.md summarizing the results
+
+Folders **tracks30** and **tracks** correspond to the same common model trained during 30 and 5 epochs respectively
+using data for Track 1 and Track 2. They additionally include these videos:
+* track1_video.mp4 containing video recording of a vehicle driving autonomously around the Track 1
+* track2_video.mp4 containing video recording of a vehicle driving autonomously around the Track 2
+* track2prev_video.mp4 containing video recording of a vehicle driving autonomously around the previous version of Track 2
+
+Folder **track1fast** corresponds to the same model trained during 5 epochs using data from Track 1 only and a parameter
+tuned for faster drive. It additionally includes this video:
+* track1fast_video.mp4 containing video recording of a vehicle driving autonomously around the Track 1 with a speed equals 24
 
 #### 2. Submission includes functional code
 Using the Udacity provided simulator and my drive.py file, the car can be driven autonomously around the track by executing 
