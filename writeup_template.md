@@ -22,6 +22,8 @@ The goals / steps of this project are the following:
 [image6]: ./examples/placeholder_small.png "Normal Image"
 [image7]: ./examples/placeholder_small.png "Flipped Image"
 
+[NVIDIA]: https://devblogs.nvidia.com/parallelforall/deep-learning-self-driving-cars/
+
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
 
@@ -30,37 +32,52 @@ The goals / steps of this project are the following:
 
 #### 1. Submission includes all required files and can be used to run the simulator in autonomous mode
 
-My project includes 3 folders **tracks30**, **tracks**, **track1fast** with the following files in each:
+My project includes 3 folders **tracks**, **tracks30**, **track1fast** with the following files in each:
 * model.py containing the script to create and train the model
 * model.ipynb using model.py to run the pipeline step by step and build various plots
 * drive.py for driving the car in autonomous mode
 * model.h5 containing a trained convolution neural network 
 
+**tracks** is a main folder, while **tracks30** and **track1fast** are for reference when presenting complimentary results.
+
 Folders **tracks30** and **tracks** correspond to the same common model trained during 30 and 5 epochs respectively
-using data for Track 1 and Track 2. They additionally include these videos:
+using data for both Track 1 and Track 2. They additionally include these videos:
 * track1_video.mp4 containing video recording of a vehicle driving autonomously around the Track 1
 * track2_video.mp4 containing video recording of a vehicle driving autonomously around the Track 2
-* track2prev_video.mp4 containing video recording of a vehicle driving autonomously around the previous version of Track 2
+* track2prev_video.mp4 containing video recording of a vehicle driving autonomously around the older version of Track 2
 
 Folder **track1fast** corresponds to the same model trained during 5 epochs using data from Track 1 only and a parameter
 tuned for faster drive. It additionally includes this video:
 * track1fast_video.mp4 containing video recording of a vehicle driving autonomously around the Track 1 with a speed equals 24
 
 #### 2. Submission includes functional code
-Using the Udacity provided simulator and my drive.py file, the car can be driven autonomously around the track by executing 
+Using the Udacity provided simulators and my drive.py file, the car can be driven autonomously around the track by executing 
 ```sh
 python drive.py model.h5
 ```
+in each of the folders **tracks**, **tracks30** and **track1fast**.
+For Track 1 and Track 2 current version of **windows_sim.exe** was used and **Default Windows desktop 64-bit.exe** for older Track 2. 
 
 #### 3. Submission code is usable and readable
 
-The model.py file contains the code for training and saving the convolution neural network. The file shows the pipeline I used for training and validating the model, and it contains comments to explain how the code works.
+The **model.py** file contains the code for training and saving the convolution neural network. The file shows the pipeline I used for training and validating the model, and it contains comments to explain how the code works.
+The code consists of three parts:
+* Initialization of parameters (**lines 1-13**)
+* Definition of the class BehavioralCloning encapsulating the solution pipeline (**lines 14-190**)
+* The code instantiating the model and running the training/validation process (**lines 192-197**)
+
+Additionally the **model.ipynb** lets run the pipeline step by step and get visualisations used in this report.
 
 ### Model Architecture and Training Strategy
 
 #### 1. An appropriate model architecture has been employed
 
-My model consists of a convolution neural network with 3x3 filter sizes and depths between 32 and 128 (model.py lines 18-24) 
+I've implemented the model as described in this [NVIDIA article][NVIDIA].
+
+
+
+
+My model is based consists of a convolution neural network with 3x3 filter sizes and depths between 32 and 128 (model.py lines 18-24) 
 
 The model includes RELU layers to introduce nonlinearity (code line 20), and the data is normalized in the model using a Keras lambda layer (code line 18). 
 
