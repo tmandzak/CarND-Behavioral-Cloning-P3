@@ -15,8 +15,8 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./examples/cnn-architecture.png "CNN architecture"
-[image2]: ./examples/placeholder.png "Grayscaling"
-[image3]: ./examples/placeholder_small.png "Recovery Image"
+[image2]: ./examples/track1HSVYUV.PNG "Track 1 HSV YUV"
+[image3]: ./examples/track2HSVYUV.PNG "Track 2 HSV YUV"
 [image4]: ./examples/placeholder_small.png "Recovery Image"
 [image5]: ./examples/placeholder_small.png "Recovery Image"
 [image6]: ./examples/placeholder_small.png "Normal Image"
@@ -99,9 +99,18 @@ For details about how I created the training data, see the next section.
 
 #### 1. Solution Design Approach
 
-The overall strategy for deriving a model architecture was to ...
+The overall strategy for deriving a model architecture was to keep it as simple as possible so that I have a more clear sence of how things work introducing small updates if necessery.
 
-My first step was to use a convolution neural network model similar to the ... I thought this model might be appropriate because ...
+My first step was to implement all parts presented in the Behavioral Cloning lesson and use a convolution neural network model similar to the one developed by [NVIDIA][NVIDIA] as I was curious about how this model might work in a simulated environment.
+The next step was to introduce an appropriate way of image preprocessing since as I learned from my previous projects it has a huge influence. I decided to try moving to other color spaces so I picked a few representative images from Track 1 and Track 2 and outputed them by layers of HSV and YUV colorspaces:
+
+*Track 1*
+![alt text][image2]
+
+*Track 2* 
+![alt text][image3]
+
+
 
 In order to gauge how well the model was working, I split my image and steering angle data into a training and validation set. I found that my first model had a low mean squared error on the training set but a high mean squared error on the validation set. This implied that the model was overfitting. 
 
