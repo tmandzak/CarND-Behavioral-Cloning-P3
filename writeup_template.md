@@ -14,7 +14,7 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/placeholder.png "Model Visualization"
+[image1]: ./examples/cnn-architecture.png "CNN architecture"
 [image2]: ./examples/placeholder.png "Grayscaling"
 [image3]: ./examples/placeholder_small.png "Recovery Image"
 [image4]: ./examples/placeholder_small.png "Recovery Image"
@@ -72,14 +72,11 @@ Additionally the **model.ipynb** lets run the pipeline step by step and get visu
 
 #### 1. An appropriate model architecture has been employed
 
-I've implemented the model as described in this [NVIDIA article][NVIDIA].
+I've implemented the model in the ```__defineCNN``` method (**lines 46-61**) as described in [NVIDIA article][NVIDIA] 
 
+![alt text][image1]
 
-
-
-My model is based consists of a convolution neural network with 3x3 filter sizes and depths between 32 and 128 (model.py lines 18-24) 
-
-The model includes RELU layers to introduce nonlinearity (code line 20), and the data is normalized in the model using a Keras lambda layer (code line 18). 
+The data is normalized in the model using a Keras lambda layer (**line 18**). 
 
 #### 2. Attempts to reduce overfitting in the model
 
