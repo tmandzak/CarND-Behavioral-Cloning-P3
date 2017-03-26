@@ -171,31 +171,17 @@ A histogram for steering angles on undersampling looks like this:
 
 ![alt text][image8]
 
-The next step is to augmemnt the data with side cameras images and corresponding adjusted steering measures so that the model learns to recover back to the center of the road.
+The next step is to augmemnt the data with side cameras images and corresponding adjusted steering measures so that the model learns to recover back to the center of the road (**lines 106-114**):
 
+![alt text][image9]
 
+After the collection process, I had 50538 data points.
 
-on track one using center lane driving. Here is an example image of center lane driving:
+Additionally flipped images are added to train and validation data. This augmentation is performed on a batch level for images already loaded into the memory so that we can avoid doubling of disk read operations (**lines 130-137**).
 
+I finally randomly shuffled the data set and put 20% of the data into a validation set (**lines 95, 159**). 
 
-I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to .... These images show what a recovery looks like starting from ... :
-
-
-Then I repeated this process on track two in order to get more data points.
-
-To augment the data sat, I also flipped images and angles thinking that this would ... For example, here is an image that has then been flipped:
-
-![alt text][image6]
-![alt text][image7]
-
-Etc ....
-
-After the collection process, I had X number of data points. I then preprocessed this data by ...
-
-
-I finally randomly shuffled the data set and put Y% of the data into a validation set. 
-
-I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was Z as evidenced by ... I used an adam optimizer so that manually training the learning rate wasn't necessary.
+I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The acceptable number of epochs was 5 as evidenced by video recordings from all three tracks mentioned. I used an adam optimizer so that manually training the learning rate wasn't necessary.
 
 ### Opportunities for improevment
 
