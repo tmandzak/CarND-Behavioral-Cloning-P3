@@ -101,7 +101,15 @@ For details about how I created the training data, see the next section.
 
 The overall strategy for deriving a model architecture was to keep it as simple as possible so that I have a more clear sence of how things work introducing small updates if necessery.
 
-My first step was to implement all parts presented in the Behavioral Cloning lesson and use a convolution neural network model similar to the one developed by [NVIDIA][NVIDIA] as I was curious about how this model might work in a simulated environment.
+My first step was to implement all parts presented in the Behavioral Cloning lesson and use a convolution neural network model similar to the one developed by [NVIDIA][NVIDIA] as I was curious about how this model might work in a simulated environment. Following parts were implemented:
+* Data loading using Pandas (**line 40**)
+* NVIDIA CNN (**lines 47-61**)
+* Normalization and cropping (**lines 48-50**)
+* Augmenting data by flipping (**lines 130-137**)
+* Creating adjusted steering measurements for the side camera images (**lines 106-114**)
+* Compiling the model using adam optimizer (**line 171**)
+* Training and validating the model using generators (**lines 145-155, 173-179**)
+* Outputting Training and Validation Loss Metrics (**lines 182-190**)
 
 The next step was to introduce an appropriate way of image preprocessing since as I learned from my previous projects it has a huge influence. I decided to try moving to other color spaces so I picked a few representative images from Track 1 and Track 2 and outputed them by layers of HSV and YUV colorspaces:
 
@@ -111,12 +119,11 @@ The next step was to introduce an appropriate way of image preprocessing since a
 *Track 2* 
 ![alt text][image3]
 
-As it can be seen from these images the S layer of HSV is the best to distinguish the road in a quite common way for various road textures. At the same time the V layer of HSV looks to be the best to distinguish lane lines.
+As it can be seen from these images the S layer of HSV is the best to distinguish the road in a quite common way for various road textures. At the same time the V layer of HSV looks to be the best to distinguish lane lines both under the light and in shadows.
 
 ![alt text][image4]
 
-
-Experiments showed that for Track 1 representing the image as a single S layer was enough same as V layer was enough for Track 2, but neither of them was enough for both Track 1 and Track 2 so I decided to represent the input images in 2 layers - S and V. 
+Experiments showed that for Track 1 representing the image as a single S layer was enough same as V layer was enough for Track 2, but neither of them was enough for both Track 1 and Track 2 so I decided to represent the input images in 2 layers - S and V (**model.py lines 117-119**)
 
 In order to gauge how well the model was working, I split my image and steering angle data into a training and validation set. I found that my first model had a low mean squared error on the training set but a high mean squared error on the validation set. This implied that the model was overfitting. 
 
