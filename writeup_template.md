@@ -20,7 +20,7 @@ The goals / steps of this project are the following:
 [image4]: ./examples/tracksSV.png "Track 1&2 SV"
 [image5]: ./examples/epochs30.png "Loss vs 30 epochs"
 [image6]: ./examples/epochs5.png "Loss vs 5 epochs"
-[image7]: ./examples/placeholder_small.png "Flipped Image"
+[image7]: ./examples/initialSteeringHist.png "Initial steeering histogram"
 
 [NVIDIA]: https://devblogs.nvidia.com/parallelforall/deep-learning-self-driving-cars/
 
@@ -76,7 +76,7 @@ I've implemented the model in the ```__defineCNN``` method (**lines 46-61**) as 
 
 ![alt text][image1]
 
-The data is normalized in the model using a Keras lambda layer (**line 18**). 
+Figure shows the network architecture, which consists of 9 layers, including a normalization layer, 5 convolutional layers, and 3 fully connected layers. The data is normalized in the model using a Keras lambda layer (**line 18**). 
 
 #### 2. Attempts to reduce overfitting in the model
 
@@ -152,23 +152,22 @@ since the car is now able to reach the center of the road faster and too steep a
 
 #### 2. Final Model Architecture
 
-The final model architecture (model.py lines 18-24) consisted of a convolution neural network with the following layers and layer sizes ...
-
-Here is a visualization of the architecture (note: visualizing the architecture is optional according to the project rubric)
-
-![alt text][image1]
+The final model architecture (**model.py lines 47-61**) consists of a convolution neural network described above with additional
+dropout inserted between convolutional and classification layers. The input image is first converted to HSV, then S and V planes are passed to the network. Steering angle is a single output of the model.
 
 #### 3. Creation of the Training Set & Training Process
 
-To capture good driving behavior, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving:
+For Track 1 I've used the data provided in resources. To capture good driving behavior on Track 2, I first recorded 6 laps in forward direction and 6 laps in backward direction and randomly picked half of images that are then joined to Track 1 data.
+A histogram for steering angles on this stage looks like this:
 
-![alt text][image2]
+![alt text][image7]
+
+
+on track one using center lane driving. Here is an example image of center lane driving:
+
 
 I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to .... These images show what a recovery looks like starting from ... :
 
-![alt text][image3]
-![alt text][image4]
-![alt text][image5]
 
 Then I repeated this process on track two in order to get more data points.
 
