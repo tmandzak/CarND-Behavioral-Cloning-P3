@@ -19,7 +19,7 @@ The goals / steps of this project are the following:
 [image3]: ./examples/track2HSVYUV.PNG "Track 2 HSV YUV"
 [image4]: ./examples/tracksSV.png "Track 1&2 SV"
 [image5]: ./examples/epochs30.png "Loss vs 30 epochs"
-[image6]: ./examples/placeholder_small.png "Normal Image"
+[image6]: ./examples/epochs5.png "Loss vs 5 epochs"
 [image7]: ./examples/placeholder_small.png "Flipped Image"
 
 [NVIDIA]: https://devblogs.nvidia.com/parallelforall/deep-learning-self-driving-cars/
@@ -132,7 +132,19 @@ Running the training\validation process on 30 epochs gave the following loss val
 
 ![alt text][image5]
 
+From the plot above we can see that model becomes more and more overfitted with epochs. 
+Corresponding model and videos can be found in **tracks30** folder.
+Though the car keeps in both Track 1 and 2, it fails on old Track 2 hitting the fence in about half a way. 
+Another probable sign of overfitting is a noticable shaking which which didn't occur for low number of epochs.
 
+Aiming to achieve a better generalization I decided to try out number of epochs equal 5. As expected after previous plot,
+training and validation losses are closer and we can expect a better generalization.
+
+![alt text][image6]
+
+
+
+Correspo
 
 
 I found that my first model had a low mean squared error on the training set but a high mean squared error on the validation set. This implied that the model was overfitting. 
