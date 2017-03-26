@@ -157,10 +157,15 @@ dropout inserted between convolutional and classification layers. The input imag
 
 #### 3. Creation of the Training Set & Training Process
 
-For Track 1 I've used the data provided in resources. To capture good driving behavior on Track 2, I first recorded 6 laps in forward direction and 6 laps in backward direction and randomly picked half of images that are then joined to Track 1 data.
+For Track 1 I've used the data provided in resources. To capture good driving behavior on Track 2, I first recorded 6 laps in forward direction and 6 laps in backward direction and randomly picked half of the images that were then joined to Track 1 data.
 A histogram for steering angles on this stage looks like this:
 
 ![alt text][image7]
+
+As we can see this data would bias the model towards -1, 0 and 1 angles so we need to undersample these values (**lines 82-103**).
+The undersampling depends on m_frac, zero_frac and p_frac parameters for -1, 0, 1 respectively that specify fraction of values to be left during undersampling. For our model ``zero_frac = 0.25```, ```m_frac = 0.6```, ```p_frac = 0.6```.
+
+
 
 
 on track one using center lane driving. Here is an example image of center lane driving:
