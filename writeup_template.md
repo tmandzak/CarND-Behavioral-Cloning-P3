@@ -132,30 +132,23 @@ Running the training\validation process on 30 epochs gave the following loss val
 
 ![alt text][image5]
 
-From the plot above we can see that model becomes more and more overfitted with epochs. 
+From the plot above we can see that the model becomes more and more overfitted with epochs. 
 Corresponding model and videos can be found in **tracks30** folder.
 Though the car keeps in both Track 1 and 2, it fails on old Track 2 hitting the fence in about half a way. 
-Another probable sign of overfitting is a noticable shaking which which didn't occur for low number of epochs.
+Another probable sign of overfitting is a noticable shaking which didn't occur for low number of epochs.
+My current best thinking is that our model is too complex for our data and that there is some space for simplifications of the model.
+Also training loss decreesing looks to be somewhat slow.
 
 Aiming to achieve a better generalization I decided to try out number of epochs equal 5. As expected after previous plot,
 training and validation losses are closer and we can expect a better generalization.
 
 ![alt text][image6]
 
+Corresponding model and results are placed in **tracks** folder and we can now see the vehicle is able to drive autonomously around each track without leaving the road.
 
+The final step was to find out what if I want the car to drive faster. In this case we need to tune ```correction``` parameter down
+since the car is now able to reach the center of the road faster and too steep angle of restore will throw the car from one side to another. Setting ```correction = 0.01``` let the car drive at a ```speed = 24``` on Track 1.
 
-Correspo
-
-
-I found that my first model had a low mean squared error on the training set but a high mean squared error on the validation set. This implied that the model was overfitting. 
-
-To combat the overfitting, I modified the model so that ...
-
-Then I ... 
-
-The final step was to run the simulator to see how well the car was driving around track one. There were a few spots where the vehicle fell off the track... to improve the driving behavior in these cases, I ....
-
-At the end of the process, the vehicle is able to drive autonomously around the track without leaving the road.
 
 #### 2. Final Model Architecture
 
@@ -192,3 +185,10 @@ After the collection process, I had X number of data points. I then preprocessed
 I finally randomly shuffled the data set and put Y% of the data into a validation set. 
 
 I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was Z as evidenced by ... I used an adam optimizer so that manually training the learning rate wasn't necessary.
+
+### Opportunities for improevment
+
+* Simplifying the model to reduce overfitting
+* Introducing batch normalization to make training loss decreese faster
+* Automatic adjustment of a ```correction``` parameter according to speed and road geometry
+* Implementing additional ways to augment the data
