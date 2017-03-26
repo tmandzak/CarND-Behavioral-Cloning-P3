@@ -21,6 +21,9 @@ The goals / steps of this project are the following:
 [image5]: ./examples/epochs30.png "Loss vs 30 epochs"
 [image6]: ./examples/epochs5.png "Loss vs 5 epochs"
 [image7]: ./examples/initialSteeringHist.png "Initial steeering histogram"
+[image8]: ./examples/undersampledSteeringHist.png "Undersampled steeering histogram"
+[image9]: ./examples/augmentedSteeringHist.png "Augmented steeering histogram"
+
 
 [NVIDIA]: https://devblogs.nvidia.com/parallelforall/deep-learning-self-driving-cars/
 
@@ -163,8 +166,12 @@ A histogram for steering angles on this stage looks like this:
 ![alt text][image7]
 
 As we can see this data would bias the model towards -1, 0 and 1 angles so we need to undersample these values (**lines 82-103**).
-The undersampling depends on m_frac, zero_frac and p_frac parameters for -1, 0, 1 respectively that specify fraction of values to be left during undersampling. For our model ``zero_frac = 0.25```, ```m_frac = 0.6```, ```p_frac = 0.6```.
+The undersampling depends on m_frac, zero_frac and p_frac parameters for -1, 0, 1 respectively that specify fraction of values to be left during undersampling. For our model ```zero_frac = 0.25```, ```m_frac = 0.6```, ```p_frac = 0.6```.
+A histogram for steering angles on undersampling looks like this:
 
+![alt text][image8]
+
+The next step is to augmemnt the data with side cameras images and corresponding adjusted steering measures so that the model learns to recover back to the center of the road.
 
 
 
